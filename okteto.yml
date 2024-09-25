@@ -1,0 +1,7 @@
+deploy:
+  image: redis
+  commands:
+    - |
+      export RELEASE_NAME=$(echo $OKTETO_DOMAIN | cut -d'.' -f1)
+      export REDIS_ENDPOINT=$RELEASE_NAME-redis-master.$RELEASE_NAME.svc.cluster.local
+      ./get-all.sh
